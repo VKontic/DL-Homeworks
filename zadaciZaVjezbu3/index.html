@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<title>vjezba3</title>
+	<style>
+	nav{
+	background-color: #abb1bd;
+    height: 40px;
+	}
+	nav a{
+		padding-right: 50px;
+	    font-size: 20px;
+	    display: inline-block;
+	    padding-top: 5px;
+	    color: #0b0b6e;
+	    font-family: monospace;
+	}
+	.centar{
+	text-align:center;
+	} 
+	table, th,td{
+		border: 1px solid black;
+	}
+	.posi{
+		margin-bottom: 10px;
+		width: 100%;
+	}
+	div[id="task4"] p{
+		font-size: 18px;
+	}
+	
+	div[id="task4"] label{
+		display: inline-block;
+		margin-top: 10px;
+	}
+	div[id="task4"] input{
+		width: 100%;
+	}
+	div[id="task4"] input[type=radio], div[id="task4"] input[type=submit]{
+		width: inherit;
+	}
+
+	</style>
+</head>
+<body>
+	
+
+<div id="task1">
+	<nav>
+		<a href="#task2">Biografija</a>
+		<a href="#task3">Filmovi</a>
+		<a href="#task4">Forma za posao</a>
+	</nav>
+</div>
+
+<div id="task2">
+<h1 class="centar">CV</h1>
+<h2 class="centar">Crtica o meni</h2>
+<p>Rodjen sam 05.07.1997. u Niksicu. Osnovnu skolu i gimnaziju zavrsio sam u Niksicu, nakon cega upisujem <a href="https://www.ucg.ac.me/pmf/">PMF</a> - C. U slobodno vrijeme relaksiram se istrazivanjem geopolitike, ezoterijskih tema, istorije, citanjem knjizevnosti, gledanjem dokumentaraca i intervjua (BalkanInfo i ostali...). Trudim se da angazujem jednako obje hemisfere mozga - analiticno-logicnu i kreativno-stvaralacku. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet lorem ipsum dolor sit amet. </p>
+<br>
+<div class="centar"><img src="slika.jpg" alt="vladimir_kontic.jpg"></div>
+<p>Programski jezici koje koje sam koristio: </p>
+<ul>
+	<li>Python</li>
+	<li>Php</li>
+	<li>SQL</li>
+	<li>Java</li>
+	<li>JS</li>
+	<li>C++/C#</li>
+</ul>
+</div>
+
+<div id="task3">
+<table>
+<caption>Neki od omiljenih filmova:</caption>
+<tr>
+	<th>Ime filma</th>
+	<th>Kratki opis</th>
+	<th>Zanr</th>
+	<th>Datum izlaska</th>
+	<th>Cover slika</th>
+	<th>Link</th>
+</tr>
+<tr>
+	<td>One Flew Over the Cuckoo's Nest</td>
+	<td>A criminal pleads insanity and is admitted to a mental institution, where he rebels against the oppressive nurse and rallies up the scared patients.</td>
+	<td>Drama</td>
+	<td>19.11.1975</td>
+	<td><img src="movies/let.jpg" alt="letIznad.jpg" width="200"></td>
+	<td><a href="https://www.imdb.com/title/tt0073486/?ref_=rt_li_tt">IMDB</a></td>
+</tr>
+<tr>
+	<td>Fight Club</td>
+	<td>An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.</td>
+	<td>Drama</td>
+	<td>15.11.1999</td>
+	<td><img src="movies/klub.jpg" alt="klubBoraca" width="200"></td>
+	<td><a href="https://www.imdb.com/title/tt0137523/?ref_=rt_li_tt">IMDB</a></td>
+</tr>
+<tr>
+	<td>Stalker</td>
+	<td>A guide leads two men through an area known as the Zone to find a room that grants wishes.</td>
+	<td>Drama, SCI-FI</td>
+	<td>17.4.1980</td>
+	<td><img src="movies/stalker.jpg" alt="stalker" width="200"></td>
+	<td><a href="https://www.imdb.com/title/tt0079944/?ref_=nm_knf_i3">IMDB</a></td>
+</tr>
+<tr>
+	<td>Wild Strawberries</td>
+	<td>After living a life marked by coldness, an aging professor is forced to confront the emptiness of his existence.</td>
+	<td>Drama, Romance </td>
+	<td>22.6.1959</td>
+	<td><img width="200" src="movies/divljeJagode.jpg" alt="divljeJagode"></td>
+	<td><a href="https://www.imdb.com/title/tt0050986/?ref_=nm_knf_t1">IMDB</a></td>
+</tr>
+<tr>
+	<td>Life Is Beautiful </td>
+	<td>When an open-minded Jewish librarian and his son become victims of the Holocaust, he uses a perfect mixture of will, humor, and imagination to protect his son from the dangers around their camp.</td>
+	<td>Drama</td>
+	<td>12.2.1999.</td>
+	<td><img src="movies/vitaBela.jpg" width="200" alt="vitaBela"></td>
+	<td><a href="https://www.imdb.com/title/tt0118799/?ref_=nv_sr_srsg_0">IMDB</a></td>
+</tr>
+</table>
+</div>
+
+<br><br><br><br><hr>
+<div id="task4" style="width: 400px">
+
+<h3>Job application with resume upload</h3>
+<p>Contact information</p>
+
+<form action="#" method="get">
+
+<div style="display:inline-block; width: 48%">
+    <label for="name">First name *</label><br>
+    <input id="name" type="text" name="name" required style="width:100%;    ">
+</div>
+<div style="display:inline-block; width: 48%; float: right;">
+    <label for="surname">Last name *</label><br>
+    <input id="surname" type="text" name="surname" required style="width:100%;">
+</div>
+
+
+<label for="email">Email:</label> <br>
+<input type="email" id="email" name="email" style="width: 100% ;" required>
+
+<label for="tel">Phone:</label> <br>
+<input type="tel" id="tel" style="width: 100% ;" required name="phone">
+
+<p>Position</p>
+
+<!-- 
+ZA POSITION NEMA POTREBE STAVLJATI REQUIRED JER NEMA OPCIJA ODABIRA "PRAZNOG".  -->
+<label for="position">Position you are apllying for:</label><br>
+<select name="position" id="position" style="width: 100%;">
+	<option value="backnode">Backend NodeJS</option>
+	<option value="backpython" selected>Backend Python</option>
+	<option value="frontreact">Frontend React</option>
+	<option value="frontang">Frontend Angular</option>
+</select>
+
+<label for="file">Resume upload</label><br>
+<input type="file" id="file" style="width: 100%; margin-bottom: 10px" name="uploadedFile">
+
+<label for="portfolio">Portfolio website:</label> <br>
+<input type="text" id="portfolio" style="width: 100% ;" name="portfolio">
+
+<label for="salary">Salary requirments:</label> <br>
+<input type="text" id="salary" style="width: 100% ;" name="salary">
+
+<label for="start">Whay can you start:</label> <br>
+<input type="text" id="start" style="width: 100% ;" name="salary">
+
+<label>Are you willing to relocate?:</label> <br>
+
+<input type="radio" name="relocate" id="r1" value="yes"><label for="r1">Yes</label><br>
+<input type="radio" name="relocate" id="r2" value="no"><label for="r2">No</label><br>
+<input type="radio" name="relocate" id="r3" value="maybe">
+<label for="r3" style="margin-bottom: 10px;display: inline-block;">Not sure</label><br>
+
+<label for="company">Last company you worked for
+</label> <br>
+<input type="text" id="company" style="width: 100% ;">
+
+<label for="comment">Comments:</label> <br>
+<textarea id="comment" style="width: 100%" name="comment"></textarea>
+
+<input type="submit" value="Submit!">
+</form>
+</div>
+
+
+</body>
+</html>
