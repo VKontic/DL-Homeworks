@@ -66,6 +66,9 @@ margin: 0 1vw;
 display: block;
 max-width: 100%;
 height: auto;
+max-height: 83vh;
+width: 100%;
+object-fit: cover;
 }
 .sectionOffersText{
 	margin-left: 8vw;
@@ -130,7 +133,7 @@ grid-template-columns: repeat( auto-fit, minmax(150px, 1fr) );
 
 .categoryBox{
 	background-color:#f4f4f4;
-	/*height: 15.6875rem;*/
+	height: 15.6875rem;
 }
 .textFC{
 margin-left: 8vw;
@@ -158,4 +161,6 @@ margin-bottom: 0.7rem;
  max-width: 100%;
  border-bottom: 1px solid #969191;
  width: 100%;
+object-fit: cover;
+height: 12rem;
 }
