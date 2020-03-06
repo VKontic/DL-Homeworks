@@ -396,9 +396,62 @@ margin-bottom: 0.45rem;
 
 footer{
 width: 100%;
-height: 35rem;
 background-color: #0a0f2e;
+font-size: 1rem;
+color: #6f738e;
+line-height: 1.5rem;
 }
+footer>div{
+	border-bottom: 1px solid rgba(255,255,255, 0.3);
+	padding-bottom: 2.5rem;
+}
+.footerGrid{
+	display: grid;
+	justify-content: space-evenly;
+	grid-template-columns: 20rem 10rem 10rem;
+}
+footer>div div{
+	padding-top: 3.5rem;
+}
+.footerGrid img{
+	display: block;
+    width: 10rem;
+    margin-left: -1.7rem;
+}
+.footerHeading{
+	font-size: 1.125rem;
+    color: #ffffff;
+    margin-bottom: 0;
+    margin-top: 2rem;
+    height: 3rem;
+}
+footer ul {
+	list-style: none;
+    padding: 0;
+}
+
+.metaFooter{
+	display: grid;
+	justify-content: space-evenly;
+	grid-template-columns: auto auto auto;
+	padding: 1rem 0;
+}
+.metaFooter span{
+	color: #00B4FF;
+}
+.metaFooter div:nth-child(2){
+	display: flex; /*pomocu samo ove jedne linije dobijamo vertikalno centriranje*/
+}
+.metaFooter a{
+	color: #6f738e;
+}
+.metaFooter ul{
+	display: flex;
+}
+.metaFooter li{
+	margin-right: 1rem;
+}
+
 @media (max-width: 1130px){
 	.bestPriceOfferBox img{
 		height: 19rem;
@@ -425,6 +478,13 @@ background-color: #0a0f2e;
 	html{
 		font-size: 15px;
 	}
+	.footerGrid{
+		grid-template-columns: 2fr 1fr 1fr;
+    	font-size: 90%;
+	}
+	footer>div div{
+		margin-left: 1.25rem;
+	}
 	.blogPosts img{
 		height: 13rem;
 	}
@@ -443,6 +503,12 @@ background-color: #0a0f2e;
 	}
 	.subscribe input{
 		width: 16rem;
+	}
+	.metaFooter img{
+		width: 9rem;
+	}
+	.metaFooter li {
+    	margin-right: 0.5rem;
 	}
 }
 
@@ -482,6 +548,43 @@ background-color: #0a0f2e;
 		padding-top: 1.4rem;
     	padding-bottom: 1.4rem;
 	}
+	.footerGrid{
+		font-size: 100%;
+		grid-template-columns: 40% 40%;
+		justify-content: space-evenly;
+	}
+	footer>div div{
+		margin-left: 0;
+		padding-top: 2rem;
+	}
+	footer>div div:nth-child(1){
+		grid-column: 1/3;
+	    text-align: center;
+	}
+	.footerGrid img{
+		display: inline;
+	    width: 8rem;
+	}
+	.footerHeading{
+		height: initial;
+	}
+	footer div:nth-child(n+1){
+		padding-top: 0;
+    	text-align: center;
+	}
+	.metaFooter{
+		grid-template-columns: auto;
+	}
+	.metaFooter div:nth-child(2) {
+    	justify-content: center;
+	}
+	.metaFooter ul {
+    	justify-content: center;
+	}
+	.metaFooter img {
+    	width: 12rem;
+	}
+
 }
 
 @media (max-width: 430px){
