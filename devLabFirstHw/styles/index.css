@@ -11,6 +11,7 @@ body{
 nav{
 	margin-bottom: 58px;
 }
+
 header{
 	display: grid;
 	grid-template-columns: auto auto auto;
@@ -139,6 +140,7 @@ grid-row-gap: 1rem;
 
 
 .categoryBox{
+	    cursor: pointer;
 	background-color:#f4f4f4;
 	height: 15.6875rem;
 	transition: all .2s ease-in-out;
@@ -212,6 +214,7 @@ height: 76.5%;
 .bestPriceOfferBox{
 height: 100%;
 background-color: #f4f4f4;
+cursor: pointer;
 }
 .bestPriceOfferBox>div{
 	height: 20rem;
@@ -340,10 +343,11 @@ display: none;
 }
 
 .blogHeading{
-font-size: 1.125rem;
-color: #0a0f2e;
-font-weight: 550;
-margin-bottom: 0.45rem;
+	font-size: 1.125rem;
+	color: #0a0f2e;
+	font-weight: 550;
+	margin-bottom: 0.45rem;
+	cursor: pointer;
 }
 .blogDateAuthor{
 	font-size: 0.875rem;
@@ -441,6 +445,10 @@ footer>div{
 	display: grid;
 	justify-content: space-evenly;
 	grid-template-columns: 20rem 10rem 10rem;
+}
+.footerGrid div:nth-child(1) p:nth-child(n+3):hover{
+	cursor: pointer;
+	text-decoration: underline;
 }
 footer>div div{
 	padding-top: 3.5rem;
