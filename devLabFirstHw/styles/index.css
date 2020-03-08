@@ -63,12 +63,13 @@ margin: 0 1vw;
     position: relative;
 }
 .sectionOffersImage{
-display: block;
-max-width: 100%;
-height: auto;
-max-height: 83vh;
-width: 100%;
-object-fit: cover;
+	display: block;
+	max-width: 100%;
+	height: auto;
+	max-height: 83vh;
+	width: 100%;
+	object-fit: cover;
+    min-height: 30vh;
 }
 .sectionOffersText{
 	margin-left: 8vw;
@@ -581,7 +582,6 @@ footer ul li:hover{
 		font-size: 1.2rem;
 	}
 	.buttonOffer{
-		font-size: 0.8rem;
 	    padding: 0.5rem 1.3rem;
 	}
 	.hack button{
@@ -628,6 +628,10 @@ footer ul li:hover{
 }
 
 @media (max-width: 430px){
+	.blogPostCard{
+		width: 80%;
+	    justify-self: center;
+	}
 	.ulCategories{
 		display: flex;
 		flex-direction: column;
@@ -637,9 +641,6 @@ footer ul li:hover{
 	.ulCategories li {
 		font-size: 1rem;
 		line-height: 1.6rem;
-	}
-	.textOfferDesc{
-		font-size: 0.7rem;
 	}
 	.smartWatches{
 		grid-template-columns: repeat(1, 1fr);
@@ -659,9 +660,13 @@ footer ul li:hover{
 		height: 10rem;
 		grid-column:1;
 	}
+	.bestPriceOfferBox{
+		width: 80%;
+    	justify-self: center;
+	}
 
 	.bestPriceOfferBox img{
-		height: 17.5rem;
+		height: 14.5rem;
 	}
 	.bestPriceOfferBox>div{
 	height: 17.5rem;
@@ -669,5 +674,18 @@ footer ul li:hover{
 
 	html{
 		font-size: 13px;
+	}
+}
+
+@media (max-width: 372px){
+	.categoryBox{
+		width: 70%;
+    	justify-self: center;
+	}
+	.categoryBox:hover{
+		transform: scale(1.0);
+		-webkit-box-shadow: initial;
+		-moz-box-shadow: inital;
+		box-shadow: initial;
 	}
 }
