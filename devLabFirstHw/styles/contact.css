@@ -1,0 +1,100 @@
+body{
+	margin:0;
+	padding: 0;
+	font-family: "Roboto";
+}
+.containter{
+	background-image: url(../resources/Contact/backgroundImage.jpg);
+	background-repeat: no-repeat;
+    background-size: 100vw 100%;
+}
+h1 {
+    text-align: center;
+    color: #041258;
+    margin-bottom: 0;
+    padding-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.subheading{
+	font-size: 1.5rem;
+    text-align: center;
+    color: #041258;
+    margin:1rem;
+}
+.gridContactForm{
+	display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-evenly;
+}
+.gridContactForm img{
+	width: 23vw;
+	display: block;
+    height: auto;
+    object-fit: cover;
+    min-width: 17rem;
+}
+input[type=text], input[type=email], textarea{
+box-sizing: border-box;
+    height: 3rem;
+    width: 25rem;
+    border: 1px solid rgb(227, 227, 227);
+    background-color: rgb(255, 255, 255); 
+    border-radius: 40px;
+    font-family: "Open Sans";
+    font-size: 1rem;
+    padding: 0px 1.25rem;
+    margin-bottom: 1rem;
+}
+textarea{
+	 height: 6.25rem;
+	 border-radius: 1rem;
+	 line-height: 1;
+	 padding-top: 0.8rem;
+	 padding-bottom: 0.8rem;
+}
+input[type=submit]{
+	margin-bottom: 2rem;
+    box-sizing: border-box;
+    height: 3.5rem;
+    width: 25rem;
+    cursor: pointer;
+    background: -webkit-linear-gradient(left, rgb(148, 115, 221) 0%, rgb(26, 201, 228) 100%);
+    border: none;
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    border-radius: 1.875rem;
+}
+form{
+	text-align: center;
+}
+
+@media (max-width: 768px){
+	.gridContactForm{
+    grid-template-columns: auto;
+    grid-row-gap: 2rem;
+	}
+	.gridContactForm img{
+	width: 16rem;
+	display: block;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+	}
+	.containter{
+		background-size: cover;
+	}
+}
+@media (max-width: 375px){
+	input[type=text], input[type=email], textarea{
+		    height: 2.5rem;
+    		width: 21rem;
+	}
+	input[type=submit]{
+		height: 3.3rem;
+    	width: 21rem;
+	}
+}
