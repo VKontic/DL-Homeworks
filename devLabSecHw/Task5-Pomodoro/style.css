@@ -1,0 +1,40 @@
+body{
+	margin:0;
+	padding: 0;
+}
+
+.tab{
+	background-color: #47A6CE;
+	color: white;
+	font-size: 1.5rem;
+	padding: 1rem 5rem;
+	border: 1px solid #2c78b2;
+	margin-top: 10vh;
+	cursor: pointer;
+}
+.active{
+	background-color: #3785A3;
+}
+.container{
+	text-align: center;
+}
+h1{
+	font-size: 7rem;
+}
+.clockBtn{
+	font-size: 1.5rem;
+    padding: 1rem 2rem;
+    color: white;
+    margin-right: 2rem;
+    cursor: pointer;
+}
+.start{
+ background-color: #65A40F;
+}
+.stop{
+background-color: #C00800;
+}
+.reset{
+background-color: #E9E9E9;
+color: black;
+}

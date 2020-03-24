@@ -1,0 +1,74 @@
+body{
+	margin:0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: #b2b2b208;
+}
+label{
+	font-size: 2rem;
+}
+#charNumber{
+	width: 50%;
+    font-size: 1.5rem;
+    border: 2px solid #8484a8;
+    border-radius: 10px;
+    padding: 0.5rem;
+    color: #645e5e;
+}
+
+.myButton {
+	box-shadow: 0px 12px 18px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:1.2rem;
+	padding: 0.6rem 1.8rem;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+.field{
+	width: 1.7rem;
+    height: 1.5rem;
+    display: inline;
+    padding: 1rem;
+    font-size: 2rem;
+    color: #645e5e;
+}
+.fa-plus-circle{
+	font-size: 2rem;
+    color: #467384;
+    cursor: pointer;
+}
+.fa-minus-circle{
+	color:red;
+	position: absolute;
+	top: 0;
+    right: 2px;
+    cursor: pointer;
+}
+.wrapper{
+	position: relative;
+	display: inline-block;
+	max-width: 100%;
+    margin-right: 3px;
+}
+.errorMessage{
+	position: absolute;
+    z-index: 1;
+    bottom: -2.5rem;
+    left: 0.5rem;
+    color: red;
+    font-weight: bold;
+}
+.resultMessage{
+
+}
