@@ -13,6 +13,11 @@ let seconds = document.querySelector('.seconds');
 var counter ;
 let counterSet = false;
 
+setInterval(function(){ 
+document.title = document.querySelector('h1').innerText + " TomatoTimer";
+ }, 100);
+
+
 function resetTime(min, sec){
 	clearInterval(counter);
 	counterSet = false;
