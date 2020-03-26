@@ -16,7 +16,6 @@ function addItem(event) {
     event.preventDefault();
     // Sada nam treba vrijednost iz input polja
     const vrijednost = document.querySelector('#item').value;
-    // Sledeci korak je kreiranje novog li itema
     const newLi = document.createElement('li');
     if (itemList.childElementCount == 0){
         newLi.tabIndex = 1;
@@ -42,6 +41,9 @@ function addItem(event) {
     newLi.appendChild(delBtn);
     // Nakon toga, potrebno je da dodamo novokreirani li u listu itema
     itemList.appendChild(newLi);
+
+    const key = "item_" + vrijednost;
+    localStorage.setItem(key, vrijednost);
 }
 // 2. Brisanje elemenata iz liste
 // Na item list dodamo click event i event handler za brisanje itema removeItem
@@ -52,6 +54,8 @@ function removeItem(event) {
         if (confirm("Jeste li sigurni da zelite da uklonite item?")) {
             // trebamo da obrisemo li element
             const liDel = event.target.parentElement;
+            let itemValue = liDel.innerText.substring(0,itemList.firstElementChild.innerText.length-2);
+            localStorage.removeItem('item_'+itemValue);//brisanje iz local storage
             liDel.parentElement.removeChild(liDel);
         }
     }else{
@@ -131,4 +135,27 @@ document.querySelector("body").addEventListener("keydown", function(e){
             document.querySelector('#item').value = itemValue;
         }
     }
-})
+});
+
+(function(){
+    for (let i = 0; i <localStorage.length; i++){
+        console.log(localStorage.getItem(i));
+        const newLi = document.createElement('li');
+        if (itemList.childElementCount == 0){
+            newLi.tabIndex = 1;
+        }else{
+            newLi.tabIndex =  Number(itemList.lastElementChild.tabIndex) + 1;
+            console.log(Number(itemList.lastElementChild.tabIndex));
+        }
+        newLi.classList.add("list-group-item");
+        const txt = document.createTextNode(localStorage.getItem( localStorage.key( i )));
+        newLi.appendChild(txt);
+
+        const delBtn = document.createElement("button");
+        delBtn.classList.add('btn', 'btn-danger', 'btn-sm', 'float-right','delete');
+        const btnText = document.createTextNode("X");
+        delBtn.appendChild(btnText);
+        newLi.appendChild(delBtn);
+        itemList.appendChild(newLi);
+    }
+})();
