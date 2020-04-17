@@ -6,10 +6,13 @@ let btnAddProduct = document.querySelector('.btnAddProduct');
 let listProducts = document.querySelector('.list-products');
 let totalPrice = document.querySelector('b');
 let modal = document.querySelector('.modal');
-let closeModal = document.querySelector('.closeModal');
+let modalContent = document.querySelector('.modalContent');
+let modalImage = document.querySelector('.modalImage');
+let modalProductInfo = document.querySelector('.modalProductInfo');
+let closeModalBtn = document.querySelector('.closeModalBtn');
 let shoppingCardProducts = document.querySelector('.shopping-cart-products');
 
-closeModal.addEventListener('click', closeModalWindow);
+closeModalBtn.addEventListener('click', closeModalWindow);
 btnAddProduct.addEventListener('click', addProduct);
 
 
@@ -56,6 +59,10 @@ function appendAll(parentElement, arrayOfChilds){
 }
 
 function openModal(){
+	modalContent.classList.remove('modalFadeOut');
+	modalImage.classList.remove('invisibleElement');
+	modalProductInfo.classList.remove('invisibleElement');
+	closeModalBtn.classList.remove('invisibleElement');
 	modal.style.display = "block";
 }
 
@@ -126,9 +133,9 @@ function decrementAmount(e){
 }
 
 function closeModalWindow(){
-	document.querySelector('.closeModal').classList.add('invisibleElement');
-	document.querySelector('.modalImage').classList.add('invisibleElement');
-	document.querySelector('.modalProductInfo').classList.add('invisibleElement');	
-	document.querySelector('.modalContent').classList.add('modalFadeOut');
+	closeModalBtn.classList.add('invisibleElement');
+	modalImage.classList.add('invisibleElement');
+	modalProductInfo.classList.add('invisibleElement');	
+	modalContent.classList.add('modalFadeOut');
 	setTimeout(()=>modal.style.display = 'none', 500);
 }
