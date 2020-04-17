@@ -121,6 +121,10 @@
 .shopping-cart-product {
   margin-bottom: 10px;
 }
+.shopping-cart-FadeIn{
+  animation: 
+        addToShoppingCard .3s .3s cubic-bezier(0,.8,.32,1.07) forwards;
+}
 
 .product-info {
   display: flex;
@@ -168,4 +172,153 @@
 
 .shopping-cart-summary button {
   padding: 10px;
+}
+
+
+.shopingCardRemove {
+    animation: removed-item-animation .6s cubic-bezier(.55,-0.04,.91,.94) forwards;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto;
+  overflow-x: hidden;
+  background-color: rgba(0,0,0,0.6); /* Black with opacity */
+}
+
+.modalContent{
+  background-color: #fefefe;
+  margin: 10vh auto; /* 15% from the top and centered */
+  border: 0;
+  display: flex;
+  position: relative;
+  height:100px;
+  width:100px;
+  border-radius:50%;
+  animation: modalAnimation 1.5s ease forwards;
+
+}
+.closeModal{
+  color: #615f5f;
+  font-size: 2.5rem;
+  font-weight: bold;
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 1;
+  animation: modalContentFadeIn .5s 1.5s linear forwards;
+}
+.closeModal:hover{
+  color: red;
+}
+.modalFadeOut{
+  width: 60%;
+  border-radius: 0;
+  height: auto;
+  animation: removed-item-animation 0.5s ease forwards;
+}
+.invisibleElement{
+  visibility: hidden;
+}
+
+.modalImage{
+  max-width: 45%;
+  object-fit: cover;
+  min-height: 20rem;
+  max-height: 25rem;
+  opacity: 0;
+  animation: modalContentFadeIn .5s 1.5s linear forwards;
+}
+.modalProductInfo{
+  padding: 1rem;
+  opacity: 0;
+  animation: modalContentFadeIn .5s 1.5s linear forwards;
+}
+.modalDesc{
+      color: #5f5b5b;
+    line-height: 1.5;
+    font-size: 1.1rem;
+}
+.modalPrice{
+  font-size: 1.2rem;
+    font-weight: bold;
+    color: #7196d6;
+}
+.modalBtn{
+  padding: 1rem 2rem;
+  background-color: #4F8AF0;
+  color: white;
+  border: 0;
+  cursor: pointer;
+}
+.modalBtn:hover{
+  background-color: white;
+  color: #4F8AF0;
+  border:2px solid #4F8AF0;
+}
+
+@keyframes modalAnimation {
+  0% {
+    transform:translateX(900px);
+        top: 30%;
+  }
+  70% {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    transform:translateX(0px);
+    top: 30%;
+  }
+  90% {
+    height: 340px;
+    width: 200px;
+    border-radius: 3%;
+  }
+  100% {
+    top: inherit;
+    border-radius:0;
+    border: 1px solid #888;
+    width: 60%;
+    height: initial;
+  }
+}
+
+@keyframes modalContentFadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@keyframes removed-item-animation {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+ 
+    to {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+ 
+@keyframes addToShoppingCard {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+ 
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

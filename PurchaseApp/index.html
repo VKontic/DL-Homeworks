@@ -16,25 +16,25 @@
     <form>
       <div>
         <label>Product name:</label>
-        <input type="text" placeholder="Casio Watch" />
+        <input type="text" class="inputProductName" placeholder="Casio Watch" value="xiaomi mi a2" />
       </div>
       
       <div>
         <label>Product description:</label>
-        <textarea placeholder="Sample description..."></textarea>
+        <textarea class="inputProductDesc" placeholder="Sample description..."> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, ipsam.</textarea>
       </div>
       
       <div>
         <label>Product image:</label>
-        <input type="text" placeholder="http://...jpg" />
+        <input class="inputProductImg" type="text" placeholder="http://...jpg" value="https://imgaz3.staticbg.com/thumb/large/oaupload/banggood/images/91/E9/e5bf0dd0-a577-411b-9b9b-c0bb60166151.jpg" />
       </div>
       
       <div>
         <label>Product price:</label>
-        <input type="number" min="0" placeholder="33.50" />
+        <input class="inputProductPrice" type="number" min="0" placeholder="33.50" value="45" />
       </div>
       
-      <button>Add</button>
+      <button class="btnAddProduct">Add</button>
     </form>
   </div>
   
@@ -63,14 +63,14 @@
         <div class="product-info">
           <div>
             <h3>Sample Watch</h3>
-            <p>$199 &times; 1</p>
+            <p>$<span>230</span> &times; 1</p>
           </div>
           <img src="https://sc02.alicdn.com/kf/HTB1gHRfg6uhSKJjSspmq6AQDpXaI/Accept-Sample-Design-Your-Own-Blank-Wrist.jpg_350x350.jpg" />
         </div>
         <div class="product-count">
-          <button>-</button>
+          <button class="btnDecrement">-</button>
           <span>1</span>
-          <button>+</button>
+          <button class="btnIncrement">+</button>
         </div>
       </div>
       
@@ -78,7 +78,7 @@
         <div class="product-info">
           <div>
             <h3>Product #2</h3>
-            <p>$230 &times; 1</p>
+            <p>$<span>230</span> &times; 1</p>
           </div>
           <img src="https://pl.shadestation.com/media/thumbs/350x350/media/product_images/Fossil-Watches-FS5439fw350fh350.jpg" />
         </div>
@@ -95,4 +95,21 @@
       <div><button>Purchase</button></div>
     </div>
   </div>
+</div>
+
+<div id="myModal" class="modal">
+
+  <div class="modalContent">
+  <span class="closeModal">&times;</span>
+    <img src="chatRobot1.jpg" alt="" class="modalImage">
+    <div class="modalProductInfo">
+      <h1>Xiaomi Mi A2</h1>
+      <p class="modalDesc">
+Banggood
+Xiaomi Mi A2 Global Version 5.99 inch 4GB RAM 64GB ROM Snapdragon 660 Octa core 4G Smartphone</p>
+      <p class="modalPrice">Price: $200</p>
+      <button class="modalBtn">ADD TO CART</button>
+    </div>
+  </div>
+
 </div>
