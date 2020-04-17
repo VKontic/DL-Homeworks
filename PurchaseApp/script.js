@@ -5,7 +5,6 @@ let productPrice = document.querySelector('.inputProductPrice');
 let btnAddProduct = document.querySelector('.btnAddProduct');
 let listProducts = document.querySelector('.list-products');
 let totalPrice = document.querySelector('b');
-let modal = document.querySelector('.modal');
 let modalContent = document.querySelector('.modalContent');
 let modalImage = document.querySelector('.modalImage');
 let modalProductInfo = document.querySelector('.modalProductInfo');
@@ -14,7 +13,8 @@ let shoppingCardProducts = document.querySelector('.shopping-cart-products');
 
 closeModalBtn.addEventListener('click', closeModalWindow);
 btnAddProduct.addEventListener('click', addProduct);
-
+document.querySelector('.btnPurchase').addEventListener('click', openPurchaseModal);
+document.querySelector('.btnClosePurchaseModal').addEventListener('click', closeModalWindow);
 
 function addProduct(e){
 	if (productName.value.trim() !== "" && productDesc.value.trim()!= "" && productImg.value.trim() != "" && productPrice.value.trim() != ""){
@@ -33,7 +33,7 @@ function addProduct(e){
 		price.innerText = `$${productPrice.value}`;
 
 		let btn1 = createElem('btn', 'details-button', 'Details');
-		btn1.addEventListener('click', openModal);
+		btn1.addEventListener('click', ()=>openModal(productName.value, productImg.value, productDesc.value.trim(), productPrice.value));
 
 		let btn2 = createElem('btn', 'buy-button', 'Buy');
 		btn2.addEventListener('click', addToShoppingCard);
@@ -58,12 +58,28 @@ function appendAll(parentElement, arrayOfChilds){
 	arrayOfChilds.forEach(child => parentElement.appendChild(child));
 }
 
-function openModal(){
+function openModal(name, img, desc, price){
+
 	modalContent.classList.remove('modalFadeOut');
 	modalImage.classList.remove('invisibleElement');
 	modalProductInfo.classList.remove('invisibleElement');
 	closeModalBtn.classList.remove('invisibleElement');
-	modal.style.display = "block";
+
+	modalImage.src=img;
+	document.querySelector('.modalProductInfo h1').innerText = name;
+	document.querySelector('.modalDesc').innerText = desc;
+	document.querySelector('.modalPrice').innerText = `Price: ${price}$`;
+
+	document.querySelector('.modal').style.display = "block";
+}
+
+function openPurchaseModal(){
+	document.querySelector('.purchaseModalHeader').classList.remove('invisibleElement');
+	document.querySelector('.purchaseModalBody').classList.remove('invisibleElement');
+	document.querySelector('.purchaseModalFooter').classList.remove('invisibleElement');
+
+	document.querySelector('.purchaseModalContent').classList.remove('modalFadeOut');
+	document.querySelector('.purchaseModal').style.display="block";
 }
 
 function addToShoppingCard(e){
@@ -133,9 +149,20 @@ function decrementAmount(e){
 }
 
 function closeModalWindow(){
+
 	closeModalBtn.classList.add('invisibleElement');
 	modalImage.classList.add('invisibleElement');
 	modalProductInfo.classList.add('invisibleElement');	
-	modalContent.classList.add('modalFadeOut');
-	setTimeout(()=>modal.style.display = 'none', 500);
+
+	document.querySelector('.purchaseModalHeader').classList.add('invisibleElement');
+	document.querySelector('.purchaseModalBody').classList.add('invisibleElement');
+	document.querySelector('.purchaseModalFooter').classList.add('invisibleElement');
+
+	document.querySelector('.modalContent').classList.add('modalFadeOut');
+	document.querySelector('.purchaseModalContent').classList.add('modalFadeOut');
+
+	setTimeout(()=>{
+		document.querySelector('.modal').style.display = 'none';
+		document.querySelector('.purchaseModal').style.display='none';	
+	}, 500)
 }
