@@ -17,7 +17,16 @@
   height: 100vh;
   overflow: scroll;
 }
-
+.countMax{
+  color:red;
+  display: inline-block;
+  margin: 0 0.3rem;
+}
+.validationMessage{
+  font-size: 0.8rem;
+  color: red;
+  margin-left: 0.3rem;
+}
 .add-product {
   padding: 30px;
 }

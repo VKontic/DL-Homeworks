@@ -26,27 +26,37 @@ function addProduct(e){
 		let name = productName.value;
 		let description = productDesc.value.trim();
 		let price = productPrice.value;
+		clearForm();
 		appendProductElem(name,imgUrl,description,price);
 
-		let newProduct = { "name":name, "imgUrl":imgUrl, "description":description,"price":price  };
+		let newProduct = { "name":name, "imgUrl":imgUrl, "description":description,"price":price, "inCard": false  };
 		localJson.push(newProduct);
-
-
-		fetch('https://jsonblob.com/api/b0cbdf1f-8157-11ea-acec-8b85d8e6a095', {
-		method: 'PUT',
-			headers: {
-      	'Content-Type': 'application/json',
-      	"Accept": 'application/json'
-    	},
-    	body: JSON.stringify(localJson)
-		})
-		.then(handleErrors)
-		.catch(function(error) {
-	        alert("Server error!" + error);
-	    });
+		updateJSON();
 
 	}else{
 		alert('Please fill out all fields')
+	}
+}
+
+function clearForm(){
+	productImg.value="";
+	productName.value="";
+	productDesc.value="";
+	productPrice.value="";
+}
+async function updateJSON(){
+	try {
+		let response = await fetch('https://jsonblob.com/api/b0cbdf1f-8157-11ea-acec-8b85d8e6a095', {
+			method: 'PUT',
+				headers: {
+	      	'Content-Type': 'application/json',
+	      	"Accept": 'application/json'
+	    	},
+	    	body: JSON.stringify(localJson)
+			});
+		}
+	catch(err) {
+		alert(err); 
 	}
 }
 
@@ -68,7 +78,7 @@ function appendProductElem(name, imgUrl, description, price){
 
 	let btn2 = createElem('btn', 'buy-button', 'Buy');
 	btn2.addEventListener('click', addToShoppingCard);
-
+	
 	appendAll(productItem, [imgElem, nameElem, priceElem, btn1, btn2] );
 	listProducts.appendChild(productItem);
 }
@@ -111,18 +121,34 @@ function openPurchaseModal(){
 }
 
 function addToShoppingCard(e){
-	console.log('test');
+	let imgUrl = e.target.parentNode.children[0].src;
+	let name = e.target.parentNode.children[1].innerText;
+	let price = e.target.parentNode.children[2].innerText.substring(1);
+
+	for (let i = 0; i <localJson.length; i++){
+		if (name.trim().toLowerCase() == localJson[i].name.trim().toLowerCase()){
+			if (localJson[i].inCard == false){
+				//add product to third column only if it is not already there
+				appendToShoppingCard(name, imgUrl, price, 'true');
+				localJson[i].inCard = true;
+				updateJSON();
+				break;
+			}else{
+				alert("Product is already in shopping card!")
+			}
+		}
+	}
+}
+
+function appendToShoppingCard(name, imgUrl, price, animation){
+
 	let shoppingCardProduct = createElem('div', 'shopping-cart-product');
 	let divProductInfo = createElem('div', 'product-info');
 	let container = document.createElement('div');
 
-	let imgPath = e.target.parentNode.children[0].src;
 	let img = document.createElement('img');
-	img.src = imgPath;
+	img.src = imgUrl;
 
-	let name = e.target.parentNode.children[1].innerText;
-	let price = e.target.parentNode.children[2].innerText.substring(1);
-	console.log("price " + price);
 	let pPrice = document.createElement('p');
 	pPrice.innerHTML = `$<span>${price}</span> &times; <span>1<span>`;
 
@@ -140,18 +166,27 @@ function addToShoppingCard(e){
 	spanAmount.innerText = 1;
 	appendAll(divProductCount, [btnDecrement, spanAmount,  btnIncrement]);
 
+	let newTotalPrice = Number(totalPrice.innerText.substring(1)) + Number(price);
+	totalPrice.innerText = `$${newTotalPrice}`;
+
 	appendAll(shoppingCardProduct, [divProductInfo, divProductCount]);
-	shoppingCardProduct.style.opacity = 0;
+	if (animation == true){
+		shoppingCardProduct.style.opacity = 0;
+		shoppingCardProduct.classList.add('shopping-cart-FadeIn');
+	}
 	shoppingCardProducts.appendChild(shoppingCardProduct);
-	shoppingCardProduct.classList.add('shopping-cart-FadeIn');
 }
 
-function decrementAmount(e){
-
-}
 function incrementAmount(e){
 	let currAmount = e.target.parentElement.children[1].innerText;
 	if (currAmount<10){
+		if(currAmount==9){
+			e.target.parentElement.children[1].classList.add('countMax','animated', 'shake');
+			setTimeout(x=>{
+			let span = createElem('span','validationMessage', "Max number of items is 10!");
+			e.target.parentElement.appendChild(span);
+			},600);
+		}
 		let price = Number(e.target.parentElement.parentElement.children[0].children[0].children[1].children[0].innerText);
 		let newTotalPrice = Number(totalPrice.innerText.substring(1))+price;
 		totalPrice.innerText = `$${newTotalPrice}`;
@@ -162,10 +197,15 @@ function incrementAmount(e){
 
 function decrementAmount(e){
 	let currAmount = e.target.parentElement.children[1].innerText;
+
+	let price = Number(e.target.parentElement.parentElement.children[0].children[0].children[1].children[0].innerText);
+	let newTotalPrice = Number(totalPrice.innerText.substring(1))-price;
+	totalPrice.innerText = `$${newTotalPrice}`;
 	if (currAmount>1){
-		let price = Number(e.target.parentElement.parentElement.children[0].children[0].children[1].children[0].innerText);
-		let newTotalPrice = Number(totalPrice.innerText.substring(1))-price;
-		totalPrice.innerText = `$${newTotalPrice}`;
+		if (currAmount==10){
+			e.target.parentElement.children[1].classList.remove('countMax', 'animated', 'shake');
+			e.target.parentElement.lastChild.remove();
+		}
 		e.target.parentElement.children[1].innerText = Number(currAmount) - 1;
 		e.target.parentElement.parentElement.children[0].children[0].children[1].children[1].innerText = Number(currAmount) - 1;
 	}else{
@@ -173,6 +213,15 @@ function decrementAmount(e){
 		setTimeout(function(){
 			e.target.parentElement.parentElement.remove();
 		}, 600);
+		let name = e.target.parentElement.parentElement.children[0].children[0].children[0].innerText;
+		//and in json set inCard to false
+		for (let i = 0; i<localJson.length; i++){
+			if (localJson[i].name.trim().toLowerCase() == name.trim().toLowerCase()){
+				localJson[i].inCard = false;
+				updateJSON();
+				break;
+			}
+		}
 	}
 }
 
@@ -216,6 +265,11 @@ function fillSecondColumn(json){
 		let imgUrl = product.imgUrl;
 		let description = product.description;
 		let price = product.price;
+		let inCard = product.inCard;
 		appendProductElem(name,imgUrl,description,price);
+
+		if (inCard == true){
+			 appendToShoppingCard(name, imgUrl, price, false);
+		}
 	})
 }

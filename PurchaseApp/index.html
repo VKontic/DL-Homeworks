@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Samostalni Dio</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -16,22 +17,22 @@
     <form>
       <div>
         <label>Product name:</label>
-        <input type="text" class="inputProductName" placeholder="Casio Watch" value="xiaomi mi a2" />
+        <input type="text" class="inputProductName" placeholder="Casio Watch" />
       </div>
       
       <div>
         <label>Product description:</label>
-        <textarea class="inputProductDesc" placeholder="Sample description..."> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, ipsam.</textarea>
+        <textarea class="inputProductDesc" placeholder="Sample description..."></textarea>
       </div>
       
       <div>
         <label>Product image:</label>
-        <input class="inputProductImg" type="text" placeholder="http://...jpg" value="https://imgaz3.staticbg.com/thumb/large/oaupload/banggood/images/91/E9/e5bf0dd0-a577-411b-9b9b-c0bb60166151.jpg" />
+        <input class="inputProductImg" type="text" placeholder="http://...jpg" />
       </div>
       
       <div>
         <label>Product price:</label>
-        <input class="inputProductPrice" type="number" min="0" placeholder="33.50" value="45" />
+        <input class="inputProductPrice" type="number" min="0" placeholder="33.50"/>
       </div>
       
       <button class="btnAddProduct">Add</button>
@@ -44,39 +45,10 @@
   
   <div class="shopping-cart">
     <div class="shopping-cart-products">
-      <div class="shopping-cart-product">
-        <div class="product-info">
-          <div>
-            <h3>Sample Watch</h3>
-            <p>$<span>230</span> &times; 1</p>
-          </div>
-          <img src="https://sc02.alicdn.com/kf/HTB1gHRfg6uhSKJjSspmq6AQDpXaI/Accept-Sample-Design-Your-Own-Blank-Wrist.jpg_350x350.jpg" />
-        </div>
-        <div class="product-count">
-          <button class="btnDecrement">-</button>
-          <span>1</span>
-          <button class="btnIncrement">+</button>
-        </div>
-      </div>
-      
-      <div class="shopping-cart-product">
-        <div class="product-info">
-          <div>
-            <h3>Product #2</h3>
-            <p>$<span>230</span> &times; 1</p>
-          </div>
-          <img src="https://pl.shadestation.com/media/thumbs/350x350/media/product_images/Fossil-Watches-FS5439fw350fh350.jpg" />
-        </div>
-        <div class="product-count">
-          <button>-</button>
-          <span>1</span>
-          <button>+</button>
-        </div>
-      </div>
       
     </div>
     <div class="shopping-cart-summary">
-      <div>Total: <b>$429</b></div>
+      <div>Total: <b>$0</b></div>
       <div><button class="btnPurchase">Purchase</button></div>
     </div>
   </div>
