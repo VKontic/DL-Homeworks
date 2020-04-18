@@ -10,6 +10,8 @@ let modalImage = document.querySelector('.modalImage');
 let modalProductInfo = document.querySelector('.modalProductInfo');
 let closeModalBtn = document.querySelector('.closeModalBtn');
 let shoppingCardProducts = document.querySelector('.shopping-cart-products');
+let jsonUrl = 'https://jsonblob.com/api/b0cbdf1f-8157-11ea-acec-8b85d8e6a095' ;
+let localJson = [];
 
 closeModalBtn.addEventListener('click', closeModalWindow);
 btnAddProduct.addEventListener('click', addProduct);
@@ -19,30 +21,56 @@ document.querySelector('.btnClosePurchaseModal').addEventListener('click', close
 function addProduct(e){
 	if (productName.value.trim() !== "" && productDesc.value.trim()!= "" && productImg.value.trim() != "" && productPrice.value.trim() != ""){
 		e.preventDefault();
-		let productItem = document.createElement('div');
-		productItem.classList.add('product');
 
-		let img = document.createElement('img');
-		img.src = productImg.value;
+		let imgUrl= productImg.value;
+		let name = productName.value;
+		let description = productDesc.value.trim();
+		let price = productPrice.value;
+		appendProductElem(name,imgUrl,description,price);
 
-		let name = document.createElement('p');
-		name.innerText =productName.value;
-		let desc = productDesc.value.trim();
-		
-		let price = document.createElement('p');
-		price.innerText = `$${productPrice.value}`;
+		let newProduct = { "name":name, "imgUrl":imgUrl, "description":description,"price":price  };
+		localJson.push(newProduct);
 
-		let btn1 = createElem('btn', 'details-button', 'Details');
-		btn1.addEventListener('click', ()=>openModal(productName.value, productImg.value, productDesc.value.trim(), productPrice.value));
 
-		let btn2 = createElem('btn', 'buy-button', 'Buy');
-		btn2.addEventListener('click', addToShoppingCard);
+		fetch('https://jsonblob.com/api/b0cbdf1f-8157-11ea-acec-8b85d8e6a095', {
+		method: 'PUT',
+			headers: {
+      	'Content-Type': 'application/json',
+      	"Accept": 'application/json'
+    	},
+    	body: JSON.stringify(localJson)
+		})
+		.then(handleErrors)
+		.catch(function(error) {
+	        alert("Server error!" + error);
+	    });
 
-		appendAll(productItem, [img, name, price, btn1, btn2] );
-		listProducts.appendChild(productItem);
 	}else{
 		alert('Please fill out all fields')
 	}
+}
+
+function appendProductElem(name, imgUrl, description, price){
+	let productItem = document.createElement('div');
+	productItem.classList.add('product');
+
+	let imgElem = document.createElement('img');
+	imgElem.src = imgUrl;
+
+	let nameElem = document.createElement('p');
+	nameElem.innerText = name;
+	
+	let priceElem = document.createElement('p');
+	priceElem.innerText = `$${price}`;
+
+	let btn1 = createElem('btn', 'details-button', 'Details');
+	btn1.addEventListener('click', ()=>openModal(name, imgUrl, description, price));
+
+	let btn2 = createElem('btn', 'buy-button', 'Buy');
+	btn2.addEventListener('click', addToShoppingCard);
+
+	appendAll(productItem, [imgElem, nameElem, priceElem, btn1, btn2] );
+	listProducts.appendChild(productItem);
 }
 
 function createElem (elem, className, text){
@@ -165,4 +193,29 @@ function closeModalWindow(){
 		document.querySelector('.modal').style.display = 'none';
 		document.querySelector('.purchaseModal').style.display='none';	
 	}, 500)
+}
+
+
+(async function readJson(){
+	try{
+		let response = await fetch(jsonUrl, {
+		headers:{'Content-Type': 'application/json'},
+		});
+		let json = await response.json();
+		fillSecondColumn(json);
+	}
+	catch(err){
+		alert(err);
+	} 
+})()
+
+function fillSecondColumn(json){
+	localJson = json;
+	json.forEach(product => {
+		let name = product.name;
+		let imgUrl = product.imgUrl;
+		let description = product.description;
+		let price = product.price;
+		appendProductElem(name,imgUrl,description,price);
+	})
 }
